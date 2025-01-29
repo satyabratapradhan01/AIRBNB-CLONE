@@ -62,11 +62,17 @@ app.get("/listings/:id/edit", async (req, res) => {
 })
 
 //update route
-app.put("/listings/:id?", async (req, res) => {
+app.put("/listings/:id", async (req, res) => {
     const { id } = req.params; 
-    await Listing.findByIdAndUpdate(id);
+    await Listing.findByIdAndUpdate(id,req.body.listings);
     res.redirect(`/listings`);
 });
+
+app.delete("/listings/:id", async (req, res) => {
+    const { id } = req.params;
+    await Listing.findByIdAndDelete(id);
+    res.redirect("/listings")
+})
 
 // app.get("/testListing", async (req, res) => {
 //     let sampleListing = new Listing({
