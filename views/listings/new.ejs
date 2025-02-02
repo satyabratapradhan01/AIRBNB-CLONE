@@ -4,21 +4,23 @@
         <div class="row">
             <div class="col-8 offset-2">
                 <h3>Create A New Listing</h3>
-                <form action="/listings" method="post">
+                <form action="/listings" method="post" novalidate class="needs-validation">
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
-                        <input type="text" name="listings[title]" placeholder="Enter Title" class="form-control">
+                        <input type="text" name="listings[title]" placeholder="Enter Title" class="form-control" required>
+                        <div class="valid-feedback">Title Looks good!</div>
                     </div>
 
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <textarea name="listings[description]" type="String" class="form-control"></textarea>
+                        <textarea name="listings[description]" type="String" class="form-control" required></textarea>
+                        <div class="invalid-feedback">Plesae enter a short description</div>
                     </div>
 
                     <div class="mb-3">
                         <label for="image" class="form-label">Image Link</label>
-                        <input type="text" name="listings[image]" placeholder="Enter image url/link"
-                            class="form-control">
+                        <input type="text" name="listings[image]" placeholder="Enter image url/link" class="form-control">
+                        
                     </div>
 
 
@@ -26,13 +28,14 @@
                     <div class="row">
                         <div class="mb-3 col-md-4">
                             <label for="price" class="form-label">Price</label>
-                            <input type="number" name="listings[price]" placeholder="Enter price" class="form-control">
+                            <input type="number" name="listings[price]" placeholder="Enter price" class="form-control" required>
+                            <div class="invalid-feedback">Price should be valid</div>
                         </div>
 
                         <div class="mb-3 col-md-8">
                             <label for="location" class="form-label">Location</label>
-                            <input type="text" name="listings[location]" placeholder="Enter location"
-                                class="form-control">
+                            <input type="text" name="listings[location]" placeholder="Enter location" class="form-control" required>
+                            <div class="invalid-feedback">Location should be valid</div>    
                         </div>
 
 
@@ -40,7 +43,8 @@
 
                     <div class="mb-3 ">
                         <label for="country" class="form-label">Country</label>
-                        <input type="text" name="listings[country]" placeholder="Enter country" class="form-control">
+                        <input type="text" name="listings[country]" placeholder="Enter country" class="form-control" required>
+                        <div class="invalid-feedback">Country name should be valid</div>
                     </div>
 
 
