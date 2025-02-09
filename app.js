@@ -10,6 +10,7 @@ const MONGO_URL = 'mongodb://127.0.0.1:27017/wanderlust';
 const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
 const { listingSchema } = require("./schema.js")
+const Review = require("./models/review.js");
 
 main().then(() =>{
     console.log("connected to DB");
@@ -35,7 +36,7 @@ app.get("/", wrapAsync((req, res) => {
 }));
 
 const validateListing = (req, res, next) => {
-    let { error } = listingSchema.validate(req.body);
+    let { error } = listingSchema.validate(req.body.Listing);
 
     if(error){
         let errMsg = error.details.map((el) => el.message).join(",");
@@ -89,6 +90,23 @@ app.delete("/listings/:id", wrapAsync(async (req, res) => {
     await Listing.findByIdAndDelete(id);
     res.redirect("/listings");
 }));
+
+
+//Review
+//Post Route
+app.post("/listings/:id/reviews", async (req, res)=> {
+    let listing = await Listing.findById(req.params.id);
+    let newReview = new Review(req.body.review);
+
+    listing.review.push(newReview);
+
+    await newReview.save();
+    await listing.save();
+
+    console.log("new review saved");
+    res.send("new review saved");
+});
+
 
 // app.get("/testListing", async (req, res) => {
 //     let sampleListing = new Listing({
