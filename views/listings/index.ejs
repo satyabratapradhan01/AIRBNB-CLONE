@@ -17,7 +17,12 @@
                 <b>
                   <%= listing.title %>
                 </b><br>
-                &#8377; <%= listing.price.toLocaleString("en-IN") %>/night
+                &#8377; <% if (listing.price !== undefined) { %> 
+                  <%= listing.price.toLocaleString("en-IN") %>
+              <% } else { %> 
+                  Price not available
+              <% } %> /night
+              
               </p>
             </div>
 
@@ -25,10 +30,4 @@
           <% } %>
     </div>
     </a>
-
-    <!-- <ul>
-    <% for (let listing of allListing) { %>
-        <li><a href="/listings/<%= listing._id %>"><%= listing.title %></a></li>
-    <% } %>
-    </ul>     -->
   </body>
