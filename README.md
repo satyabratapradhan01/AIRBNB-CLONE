@@ -23,7 +23,7 @@ This is an Airbnb clone project that allows users to authenticate, list room loc
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-username/airbnb-clone.git
+   https://github.com/satyabratapradhan01/AIRBNB-CLONE.git
    cd airbnb-clone
    ```
 2. Install dependencies:
@@ -59,11 +59,4 @@ This is an Airbnb clone project that allows users to authenticate, list room loc
 - Custom error handler middleware is used to catch and manage errors.
 - `ExpressError.js` handles custom errors with status codes and messages.
 
-## Contributing
-
-Contributions are welcome! Feel free to open issues and submit pull requests.
-
-## License
-
-This project is licensed under the MIT License. See `LICENSE` for details.
 
