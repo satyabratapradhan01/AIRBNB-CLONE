@@ -23,6 +23,7 @@ router.get("/", wrapAsync(async (req, res) => {
     res.render("./listings/index.ejs", {allListing});
 }));
 
+
 //New Route
 router.get("/new", wrapAsync(  (req, res) => {
     res.render("./listings/new.ejs");
