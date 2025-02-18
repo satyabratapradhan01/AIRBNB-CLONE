@@ -72,6 +72,9 @@ const sessionOption = {
     }
 };
 
+app.get("/", wrapAsync((req, res) => {
+    res.redirect("/listings");
+}));
 
 app.use(session(sessionOption));
 app.use(flash());
