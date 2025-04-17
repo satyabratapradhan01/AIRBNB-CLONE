@@ -2,7 +2,7 @@
 
 ## Description
 
-This is an Airbnb clone project that allows users to authenticate, list room locations, add reviews, and perform CRUD (Create, Read, Update, Delete) operations on listings and reviews.
+This is an Airbnb project that allows users to authenticate, list room locations, add reviews, and perform CRUD (Create, Read, Update, Delete) operations on listings and reviews.
 
 ## Features
 
