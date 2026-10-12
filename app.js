@@ -7,7 +7,7 @@ if(process.env.NODE_ENV != "production"){
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const port = 8080;
+const port = 8180;
 const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
@@ -25,8 +25,8 @@ const listingRoutes = require("./routes/listing.js");
 const reviewRoutes = require("./routes/review.js");
 const userRoutes = require("./routes/user.js");
 
-// const MONGO_URL = 'mongodb://127.0.0.1:27017/wanderlust';
-const dbUrl = process.env.ATLASDB_URL;
+const MONGO_URL = 'mongodb://127.0.0.1:27017/wanderlust';
+// const dbUrl = process.env.ATLASDB_URL;
 
 main().then(() =>{
     console.log("connected to DB");
@@ -36,7 +36,7 @@ main().then(() =>{
 })
 
 async function main() {
-    await mongoose.connect(dbUrl);
+    await mongoose.connect(MONGO_URL);
 }
 
 app.set("view engine", "ejs");
@@ -49,7 +49,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 const store = MongoStore.create({
-    mongoUrl: dbUrl,
+    mongoUrl: MONGO_URL,
     crypto: {
         secret: process.env.SECRET,
     },
@@ -95,15 +95,15 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get("/demouser", async( req, res)=>{
-    let fackUser = new User({
-        email: "student@getMaxListeners.com",
-        username: "thesimth"
-    })
+// app.get("/demouser", async( req, res)=>{
+//     let fackUser = new User({
+//         email: "student@getMaxListeners.com",
+//         username: "thesimth"
+//     })
 
-    let registereuser = await User.register(fackUser, "helloworld");
-    res.send(registereuser);
-})
+//     let registereuser = await User.register(fackUser, "helloworld");
+//     res.send(registereuser);
+// })
 
 app.use("/listings", listingRoutes);
 app.use("/listings/:id/reviews", reviewRoutes);
